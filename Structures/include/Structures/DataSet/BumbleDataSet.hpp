@@ -38,12 +38,14 @@ class BumbleDataSet
 		StereoRect bumbleBee_;
 		//TODO get times between frames
 	public:
-		BumbleDataSet(std::string root,std::string stereoConfig_);
+		BumbleDataSet(std::string root);
 		cv::Mat getCurrent();
 		cv::Mat getCurrentLeft();
 		cv::Mat getCurrentRight();
 		bool incrementFrame();
 		bool decrementFrame();
+		std::string getCurrentName();
+		ImageMetaData getCurrentMeta();
 };
 
 	

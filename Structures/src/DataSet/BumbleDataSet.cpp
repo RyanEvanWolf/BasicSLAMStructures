@@ -3,18 +3,13 @@
 namespace stereo
 {
 
-BumbleDataSet::BumbleDataSet(std::string root,std::string stereoConfig_)
+BumbleDataSet::BumbleDataSet(std::string root)
 {
 	rootDir_=root;
 	std::cout<<"input - "<<rootDir_<<std::endl;
 	populateFrameList();
 	current_frame_=frameReferences_.begin();
 	++current_frame_;
-	
-	//cv::FileStorage r(stereoConfig_,cv::FileStorage::WRITE);
-	//r["StereoRect"]>>bumbleBee_;
-	//r.release();
-	
 }
 
 std::vector< std::string > BumbleDataSet::getFilesList(std::string dir)
@@ -128,6 +123,32 @@ bool BumbleDataSet::incrementFrame()
 	{
 		--current_frame_;
 		return false;
+	}
+}
+
+
+std::string BumbleDataSet::getCurrentName()
+{
+	if((current_frame_!=frameReferences_.end())&&(current_frame_!=frameReferences_.begin()))
+	{
+		return current_frame_->Meta_.fileName_;
+	}
+	else
+	{
+		return "NULL";
+	}
+}
+
+
+ImageMetaData BumbleDataSet::getCurrentMeta()
+{
+	if((current_frame_!=frameReferences_.end())&&(current_frame_!=frameReferences_.begin()))
+	{
+		return current_frame_->Meta_;
+	}
+	else
+	{
+		return ImageMetaData();
 	}
 }
 
