@@ -1,25 +1,120 @@
-#include <CameraInfo/StereoRect.hpp>
+#include "Structures/CameraInfo/StereoRect.hpp"
 
 namespace stereo
 {
+	
 
-StereoRect::StereoRect(Stereo conf)
+
+StereoRect::StereoRect()
 {
-		conf.QMap_.copyTo(Qmap_);
-		conf.cam_left_.rect_mapx_dist_.copyTo(L_fMapx_);
-		conf.cam_left_.rect_mapy_dist_.copyTo(L_fMapy_);
-		conf.cam_left_.idealP_.copyTo(P_l_);
-		l_ROI_=conf.cam_left_.ROI_wD_;
-		lIso_=conf.cam_left_.iso_;
-		lrectIso_=conf.cam_left_.rectIso_;
-		
-		conf.cam_right_.rect_mapx_dist_.copyTo(R_fMapx_);
-		conf.cam_right_.rect_mapy_dist_.copyTo(R_fMapy_);
-		conf.cam_right_.idealP_.copyTo(P_r_);
-		r_ROI_=conf.cam_right_.ROI_wD_;
-		rIso_=conf.cam_right_.iso_;
-		rrectIso_=conf.cam_right_.rectIso_;
+
 }
+
+
+void StereoRect::read(const cv::FileNode& node)
+{
+	node["IdealLeft"]>>P_l_;
+	node["ROI_Left"]>>l_ROI_;
+	node["IdealRight"]>>P_r_;
+	node["ROI_Right"]>>r_ROI_;
+	node["Q_"]>>Qmap_;
+	node["baseR"]>>R_;
+	node["baseT"]>>T_;
+	node["essential"]>>E_;
+	node["fundamental"]>>F_;
+	node["leftExtrinsic"]>>lIso_;
+	node["leftRectExtrinsic"]>>lrectIso_;
+	node["rightExtrinsic"]>>rIso_;
+	node["rightRectExtrinsic"]>>rrectIso_;
+	node["LmapX_int"]>>L_iMapx_;
+	node["LmapY_int"]>>L_iMapy_;
+	node["LmapX_f"]>>L_fMapx_;
+	node["LmapY_f"]>>L_fMapy_;
+	node["RmapX_int"]>>R_iMapx_;
+	node["RmapY_int"]>>R_iMapy_;
+	node["RmapX_f"]>>R_fMapx_;
+	node["RmapY_f"]>>R_fMapy_;
+}
+
+
+void StereoRect::write(cv::FileStorage& fs) const
+{
+	fs<<"{";
+	fs<<"IdealLeft"<<P_l_;
+	fs<<"ROI_Left"<<l_ROI_;
+	fs<<"IdealRight"<<P_r_;
+	fs<<"ROI_Right"<<r_ROI_;
+	fs<<"Q_"<<Qmap_;
+	fs<<"baseR"<<R_;
+	fs<<"baseT"<<T_;
+	fs<<"essential"<<E_;
+	fs<<"fundamental"<<F_;
+	fs<<"leftExtrinsic"<<lIso_;
+	fs<<"leftRectExtrinsic"<<lrectIso_;
+	fs<<"rightExtrinsic"<<rIso_;
+	fs<<"rightRectExtrinsic"<<rrectIso_;
+	fs<<"LmapX_int"<<L_iMapx_;
+	fs<<"LmapY_int"<<L_iMapy_;
+	fs<<"LmapX_f"<<L_fMapx_;
+	fs<<"LmapY_f"<<L_fMapy_;
+	fs<<"RmapX_int"<<R_iMapx_;
+	fs<<"RmapY_int"<<R_iMapy_;
+	fs<<"RmapX_f"<<R_fMapx_;
+	fs<<"RmapY_f"<<R_fMapy_;
+	fs<<"}";
+
+}
+
+
+	/*node["IdealLeft"]>>P_l_;
+	node["ROI_Left"]>>l_ROI_;
+	node["IdealRight"]>>P_r_;
+	node["ROI_Right"]>>r_ROI_;
+	node["Q_"]>>Qmap_;
+	node["baseR"]>>R_;
+	node["baseT"]>>T_;
+	node["essential"]>>E_;
+	node["fundamental"]>>F_;
+	node["leftExtrinsic"]>>lIso_;
+	node["leftRectExtrinsic"]>>lrectIso_;
+	node["rightExtrinsic"]>>rIso_;
+	node["rightRectExtrinsic"]>>rrectIso_;
+	node["LmapX_int"]>>L_iMapx_;
+	node["LmapY_int"]>>L_iMapy_;
+	node["LmapX_f"]>>L_fMapx_;
+	node["LmapY_f"]>>L_fMapy_;
+	node["RmapX_int"]>>R_iMapx_;
+	node["RmapY_int"]>>R_iMapy_;
+	node["RmapX_f"]>>R_fMapx_;
+	node["RmapY_f"]>>R_fMapy_;*/
+
+
+
+/*	fs<<"{";
+	fs<<"IdealLeft"<<P_l_;
+	fs<<"ROI_Left"<<l_ROI_;
+	fs<<"IdealRight"<<P_r_;
+	fs<<"ROI_Right"<<r_ROI_;
+	fs<<"Q_"<<Qmap_;
+	fs<<"baseR"<<R_;
+	fs<<"baseT"<<T_;
+	fs<<"essential"<<E_;
+	fs<<"fundamental"<<F_;
+	fs<<"leftExtrinsic"<<lIso_;
+	fs<<"leftRectExtrinsic"<<lrectIso_;
+	fs<<"rightExtrinsic"<<rIso_;
+	fs<<"rightRectExtrinsic"<<rrectIso_;
+	fs<<"LmapX_int"<<L_iMapx_;
+	fs<<"LmapY_int"<<L_iMapy_;
+	fs<<"LmapX_f"<<L_fMapx_;
+	fs<<"LmapY_f"<<L_fMapy_;
+	fs<<"RmapX_int"<<R_iMapx_;
+	fs<<"RmapY_int"<<R_iMapy_;
+	fs<<"RmapX_f"<<R_fMapx_;
+	fs<<"RmapY_f"<<R_fMapy_;
+	fs<<"}";*/
+
+
 
 
 	

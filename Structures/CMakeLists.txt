@@ -29,9 +29,4 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
 )
 
-
-#link_directories(
-#	/usr/local/lib
-#)
-
 add_subdirectory(src)
