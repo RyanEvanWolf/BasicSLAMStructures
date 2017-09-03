@@ -119,7 +119,6 @@ bool BumbleDataSet::decrementFrame()
 
 bool BumbleDataSet::incrementFrame()
 {
-
 	++current_frame_;
 	if(current_frame_!=frameReferences_.end())
 	{

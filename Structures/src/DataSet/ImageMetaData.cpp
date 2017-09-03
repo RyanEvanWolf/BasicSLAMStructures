@@ -17,5 +17,22 @@ int ImageMetaData::getTimeStamp() const
 	return 0;
 }
 
+void ImageMetaData::read(const cv::FileNode& node)
+{
+	node["fullImageDirectory"]>>fullDir_;
+	node["fileName"]>>fileName_;
+}
+
+
+void ImageMetaData::write(cv::FileStorage& fs) const
+{
+	fs<<"{";
+	fs<<"fullImageDirectory"<<fullDir_;
+	fs<<"fileName"<<fileName_;
+	fs<<"}";
+}
+
+
+
 	
 }
