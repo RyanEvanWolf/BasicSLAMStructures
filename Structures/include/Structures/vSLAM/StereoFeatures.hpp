@@ -3,6 +3,7 @@
 
 #include <opencv2/features2d.hpp>
 #include "Structures/DataSet/ImageMetaData.hpp"
+#include <fstream>
 
 namespace stereo 
 {

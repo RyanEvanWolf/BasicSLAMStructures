@@ -15,7 +15,7 @@ set(DATASET_SRC "BumbleDataSet.cpp;BumbleFrame.cpp;ImageMetaData.cpp")
 set(DATASET_HEADERS "BumbleDataSet.hpp;BumbleFrame.hpp;ImageMetaData.hpp")
 set(REL_DATASET_SRC "DataSet/BumbleDataSet.cpp;DataSet/BumbleFrame.cpp;DataSet/ImageMetaData.cpp")
 
-set(vSLAM_SRC vSLAM/StereoFrame.cpp vSLAM/StereoFeatures.cpp)
+set(vSLAM_SRC vSLAM/StereoFrame.cpp vSLAM/StereoFeatures.cpp vSLAM/InterStereoFrame.cpp)
 
 
 set(RELDATA_SRCS "${REL_TRANSFORMS_SRC};${REL_CAMERA_INFO_SRC};${REL_DATASET_SRC};${vSLAM_SRC}")
@@ -29,4 +29,7 @@ target_link_libraries(DataStructures
 	boost_filesystem
 	boost_system
 	)
+	
+add_executable(displayData ${CMAKE_CURRENT_LIST_DIR}/DataSet/bin/DisplayDataSet.cpp)
+target_link_libraries(displayData DataStructures)
 
