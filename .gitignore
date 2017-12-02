@@ -1,4 +1,4 @@
- 
-./Structures/build/*
-*.kdev4
+**/CMakeLists.txt~ 
+Structures/build/**
+**.kdev4
 *.directory

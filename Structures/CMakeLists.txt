@@ -7,8 +7,6 @@ project(Structures)
 
 set(OpenCV_PROJ CACHE FILEPATH ${CMAKE_CURRENT_LIST_FILE}/cmake)
 
-#set(BUILD_DATA_STRUCTURES_TEST "TRUE" CACHE FILEPATH "Build sub unit tests for data structures library")
-
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
@@ -17,10 +15,16 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib CACHE FILEPATH "build
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib CACHE FILEPATH "Build Dynamic Libs directory")
 
 
-MESSAGE(STATUS "search path " ${OpenCV_DIR})
 find_package(OpenCV REQUIRED PATHS OpenCV_PROJ)
 find_package(Boost REQUIRED)
 
+MESSAGE(STATUS "OpenCV Found = ${OpenCV_FOUND}")
+
+if(${OpenCV_FOUND})
+	MESSAGE(STATUS "OpenCV config file search path :${OpenCV_DIR}")
+	MESSAGE(STATUS "OpenCV include DIR :${OpenCV_INCLUDE_DIRS}")
+	MESSAGE(STATUS "OpenCV libraries :${OpenCV_LIBS}")
+endif(${OpenCV_FOUND})
 
 
 include_directories(
