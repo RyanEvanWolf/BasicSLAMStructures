@@ -16,6 +16,8 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib CACHE FILEPATH "Build
 
 
 find_package(OpenCV REQUIRED PATHS OpenCV_PROJ)
+set(OpenCV_LIBS opencv_tegra)
+set(CUDA_USE_STATIC_CUDA_RUNTIME OFF)
 find_package(Boost REQUIRED)
 
 MESSAGE(STATUS "OpenCV Found = ${OpenCV_FOUND}")

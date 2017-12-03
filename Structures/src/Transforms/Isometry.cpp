@@ -90,6 +90,11 @@ cv::Mat Isometry::getT()
 	return trans_;
 }
 
+cv::Mat Isometry::getH()
+{
+	return H_;
+}
+
 
 	
   

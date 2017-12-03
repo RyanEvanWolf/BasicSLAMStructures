@@ -29,6 +29,7 @@ class Isometry{
 	void setIso(Isometry new_iso);
 	cv::Mat getR();
 	cv::Mat getT();
+	cv::Mat getH();
 	Isometry invert();
 	void invertThis();
 	void printH();
