@@ -20,16 +20,16 @@ set(vSLAM_SRC vSLAM/StereoFrame.cpp vSLAM/StereoFeatures.cpp vSLAM/InterStereoFr
 
 set(RELDATA_SRCS "${REL_TRANSFORMS_SRC};${REL_CAMERA_INFO_SRC};${REL_DATASET_SRC};${vSLAM_SRC}")
 
-add_library(DataStructures SHARED
+add_library(BasicSLAMStructures SHARED
 	${RELDATA_SRCS}
 )
 
-target_link_libraries(DataStructures
+target_link_libraries(BasicSLAMStructures
     ${OpenCV_LIBS}
 	boost_filesystem
 	boost_system
 	)
 	
 add_executable(displayData ${CMAKE_CURRENT_LIST_DIR}/DataSet/bin/DisplayDataSet.cpp)
-target_link_libraries(displayData DataStructures)
+target_link_libraries(displayData BasicSLAMStructures)
 
