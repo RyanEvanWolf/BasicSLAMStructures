@@ -22,11 +22,15 @@ class StereoRect
 		cv::Mat R_fMapx_,R_fMapy_;
 		cv::Mat Qmap_;
 		cv::Mat P_l_,P_r_;//ideal projection matrices
+		cv::Mat Kl,Kr;
+    cv::Mat Dl,Dr;
+    double lrms,rrms,stereorms;
 		cv::Rect l_ROI_,r_ROI_;
 		Isometry lIso_,lrectIso_;
 		Isometry rIso_,rrectIso_;
 		//baselineInfo
 		cv::Mat R_,T_;
+    Isometry IdealBaseLine_;
 		cv::Mat E_,F_;//essential and fundamental matrix
 		void write(cv::FileStorage& fs) const;
 		void read(const cv::FileNode& node);

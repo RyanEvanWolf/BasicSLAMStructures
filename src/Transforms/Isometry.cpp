@@ -118,8 +118,6 @@ Isometry::Isometry(cv::Mat R, cv::Mat T)
 void Isometry::printH()
 {
 	std::cout<<"H - "<<std::endl<<H_<<std::endl;
-	std::cout<<"R - "<<std::endl<<rot_<<std::endl;
-	std::cout<<"T - "<<std::endl<<trans_<<std::endl;
 }
 
 void Isometry::setIdentity()
